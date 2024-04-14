@@ -25,3 +25,4 @@ jobs:
         with:
           branch: gh-pages # The branch the action should deploy to.
           folder: dist/chat # The folder the action should deploy.        
+          token: ${{ secrets.GH_TOKEN }}
