@@ -32,7 +32,7 @@ export class ChatComponent {
         message: this.lorem + ' --' + this.counter++,
         replyId: -1
       });
-    }, 60000);
+    }, 6000);
   }
 
   sendMessage() {
