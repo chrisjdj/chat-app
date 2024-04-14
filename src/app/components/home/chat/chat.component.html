@@ -1,0 +1,30 @@
+<div class="wrapper" [class.reply]="replyMessage">
+    <div class="content scrollbar" #chatContainer>
+        <div class="message" [ngClass]="{'from': item.type=='from', 'to': item.type=='to'}"
+            *ngFor="let item of chatArray; let  i = index">
+            <div class="text">
+                <p class="reply" *ngIf="item?.replyId!=-1">
+                    {{chatArray[item.replyId]?.message}}
+                </p>
+                {{item.message}}
+            </div>
+            <mat-icon (click)="reply(i)">reply</mat-icon>
+        </div>
+    </div>
+    <div class="bottom">
+        <div class="reply" *ngIf="replyMessage">
+            <div class="msg">
+                <p>Replying to</p>
+                {{replyMessage}}
+            </div>
+            <mat-icon (click)="cancelReply()">cancel</mat-icon>
+        </div>
+        <div class="actions">
+            <mat-icon class="mic">mic</mat-icon>
+            <mat-form-field appearance="outline">
+                <input matInput placeholder="Type your message" [(ngModel)]="value" (keydown.enter)="sendMessage()">
+                <mat-icon matSuffix (click)="sendMessage()">send</mat-icon>
+            </mat-form-field>
+        </div>
+    </div>
+</div>
